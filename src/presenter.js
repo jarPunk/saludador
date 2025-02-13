@@ -1,15 +1,13 @@
-import sumar from "./sumador";
+import { saludar } from './saludo.js'; // Importa la función 'saludar'
 
-const first = document.querySelector("#primer-numero");
-const second = document.querySelector("#segundo-numero");
-const form = document.querySelector("#sumar-form");
-const div = document.querySelector("#resultado-div");
+const nombreInput = document.querySelector("#nombre"); // Obtén el campo de entrada para el nombre
+const saludoDiv = document.querySelector("#saludo"); // Obtén el elemento donde mostrar el saludo
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+// Función para mostrar el saludo al hacer clic en el botón
+function mostrarSaludo() {
+    const nombre = nombreInput.value; // Obtén el valor ingresado en el campo de texto
+    saludoDiv.innerText = saludar(nombre); // Muestra el saludo con el nombre
+}
 
-  const firstNumber = Number.parseInt(first.value);
-  const secondNumber = Number.parseInt(second.value);
-
-  div.innerHTML = "<p>" + sumar(firstNumber, secondNumber) + "</p>";
-});
+// Agregar el evento al botón
+document.querySelector("button").addEventListener("click", mostrarSaludo);
