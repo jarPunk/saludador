@@ -12,16 +12,20 @@ export function saludar(nombre = '', genero = '', edad = null, idioma = 'es') {
         saludo = 'Buenas noches';
     }
 
-    // Modificar el saludo según el género
-    if (genero === 'masculino') {
-        saludo += ', señor';
-    } else if (genero === 'femenino') {
-        saludo += ', señora';
+    // Modificar el saludo según la edad y género
+    let tratamiento = '';
+
+    if (edad !== null && edad > 30) {
+        if (genero === 'masculino') {
+            tratamiento = 'Sr. ';
+        } else if (genero === 'femenino') {
+            tratamiento = 'Sra. ';
+        }
     }
 
     // Añadir el nombre al saludo si está presente
     if (nombre) {
-        saludo += `, ${nombre}`;
+        saludo += `, ${tratamiento}${nombre}`;
     }
 
     return saludo;
